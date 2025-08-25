@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv/
+build/
+dist/
+
+# Node
+node_modules/
+*.log
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Test/coverage
+coverage/
+*.cover
+
+# Others
+*.sqlite3
+*.db
