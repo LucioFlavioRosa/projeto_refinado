@@ -1,24 +1,28 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.schemas.user import UserCreate, UserLogin, UserOut
-from app.crud import user as crud_user
-from app.core.security import create_access_token
-from app.db.session import get_db
+from app.core.database import get_db
+from app.core.security import verificar_senha, criar_token_acesso, hash_senha
+from app.schemas.auth import AuthLogin, AuthToken
+from app.models.usuario import Usuario
 
 router = APIRouter()
 
-@router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
-def register(user_in: UserCreate, db: Session = Depends(get_db)):
-    if crud_user.get_user_by_username(db, user_in.username):
-        raise HTTPException(status_code=400, detail="Usuário já existe")
-    if crud_user.get_user_by_email(db, user_in.email):
-        raise HTTPException(status_code=400, detail="Email já cadastrado")
-    return crud_user.create_user(db, user_in)
-
-@router.post("/login")
-def login(user_in: UserLogin, db: Session = Depends(get_db)):
-    user = crud_user.authenticate_user(db, user_in.username, user_in.password)
-    if not user:
+@router.post("/login", response_model=AuthToken)
+def login(auth: AuthLogin, db: Session = Depends(get_db)):
+    usuario = db.query(Usuario).filter(Usuario.email == auth.email).first()
+    if not usuario or not verificar_senha(auth.senha, usuario.senha_hash):
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
-    access_token = create_access_token(data={"sub": user.username})
-    return {"access_token": access_token, "token_type": "bearer"}
+    token = criar_token_acesso({"sub": str(usuario.id)})
+    return AuthToken(access_token=token)
+
+@router.post("/register", response_model=AuthToken)
+def register(auth: AuthLogin, db: Session = Depends(get_db)):
+    if db.query(Usuario).filter(Usuario.email == auth.email).first():
+        raise HTTPException(status_code=409, detail="Usuário já cadastrado")
+    senha_hash = hash_senha(auth.senha)
+    novo_usuario = Usuario(nome=auth.email.split("@")[0], email=auth.email, senha_hash=senha_hash)
+    db.add(novo_usuario)
+    db.commit()
+    db.refresh(novo_usuario)
+    token = criar_token_acesso({"sub": str(novo_usuario.id)})
+    return AuthToken(access_token=token)
