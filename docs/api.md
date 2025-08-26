@@ -1,37 +1,20 @@
-# Documentação de API – Sistema de Gestão de Clientes
+# Documentação da API
 
-## Endpoints Principais
+## Endpoints
 
 ### Clientes
-- `POST /clientes/` – Cadastra novo cliente
-- `GET /clientes/` – Lista clientes (filtros: nome, cpf)
-- `GET /clientes/{id}` – Consulta cliente por ID
-- `PUT /clientes/{id}` – Edita cliente
-- `DELETE /clientes/{id}` – Exclui cliente
-
-#### Exemplo de cadastro
-
-{
-  "nome": "João Silva",
-  "cpf": "12345678901",
-  "email": "joao@exemplo.com",
-  "telefone": "11999999999",
-  "data_nascimento": "1990-01-01"
-}
-
+- `POST /clientes/` — Cria novo cliente
+- `GET /clientes/` — Lista todos os clientes
+- `GET /clientes/{id}` — Busca cliente por ID
+- `PUT /clientes/{id}` — Atualiza cliente
+- `DELETE /clientes/{id}` — Remove cliente
 
 ### Autenticação
-- `POST /auth/register` – Cadastro de usuário
-- `POST /auth/login` – Login (retorna JWT)
+- `POST /auth/login` — Login do usuário (retorna JWT)
+- `POST /auth/register` — Cadastro de usuário (retorna JWT)
 
-#### Exemplo de login
+## Autorização
+- Todos os endpoints de clientes requerem autenticação via JWT no header `Authorization: Bearer <token>`
 
-{
-  "username": "admin",
-  "password": "senha123"
-}
-
-
-## Contrato de Resposta
-- Erros retornam status HTTP e mensagem detalhada.
-- JWT deve ser enviado no header Authorization: Bearer <token> para rotas protegidas.
+## Esquemas de Dados
+- Consulte os arquivos de schemas Pydantic para detalhes dos campos
