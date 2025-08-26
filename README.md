@@ -1,40 +1,38 @@
 # Sistema de Gestão de Clientes
 
-Este projeto é composto por um backend em FastAPI (Python) e um frontend em React 18 com TypeScript e Tailwind CSS. Ele permite o gerenciamento seguro de clientes de uma seguradora, incluindo autenticação JWT, persistência em PostgreSQL e interface responsiva e acessível.
+Este projeto é uma solução completa para o gerenciamento de clientes de uma seguradora, composta por backend (FastAPI + PostgreSQL) e frontend (React 18 + TypeScript + Tailwind CSS), conteinerizada com Docker e preparada para deploy na Azure.
 
-## Componentes
-- **Backend**: API RESTful em FastAPI, autenticação JWT, integração PostgreSQL, testes automatizados (pytest).
-- **Frontend**: SPA em React 18 + TypeScript + Tailwind CSS, integração com backend, validação de dados, acessibilidade WCAG 2.1, testes automatizados (Jest/Testing Library).
-- **Docker**: Orquestração via Docker Compose para ambiente de desenvolvimento e produção.
-- **Documentação**: Diagramas, contratos de API, padrões de código e manual de deploy.
+## Sumário
+- [Arquitetura](#arquitetura)
+- [Como rodar localmente](#como-rodar-localmente)
+- [Configuração de ambiente](#configuração-de-ambiente)
+- [Testes](#testes)
+- [Documentação](#documentação)
+- [Links úteis](#links-úteis)
 
-## Como iniciar
-1. Clone o repositório:
-   bash
-   git clone <url-do-repo>
-   cd sistema-gestao-clientes
-   
-2. Configure as variáveis de ambiente:
-   - Copie `.env.example` para `.env` e ajuste conforme necessário.
-3. Suba os containers:
-   bash
-   docker-compose up --build
-   
-4. Acesse:
-   - Backend: `http://localhost:8000/docs`
-   - Frontend: `http://localhost:3000`
+## Arquitetura
+- **Backend:** Python 3.11, FastAPI, SQLAlchemy, PostgreSQL, JWT Auth
+- **Frontend:** React 18, TypeScript, Tailwind CSS
+- **Infraestrutura:** Docker, Azure Pipelines, IaC
 
-## Estrutura de Pastas
-- `backend/`: API FastAPI
-- `frontend/`: SPA React
-- `docs/`: Documentação técnica
+## Como rodar localmente
+1. Clone este repositório
+2. Copie `.env.example` para `.env` no backend e frontend, preenchendo as variáveis
+3. Execute `docker-compose up --build` na raiz do projeto
+4. Acesse o frontend em [http://localhost:3000](http://localhost:3000) e a API em [http://localhost:8000/docs](http://localhost:8000/docs)
+
+## Configuração de ambiente
+- Veja os arquivos `.env.example` em backend e frontend para variáveis necessárias (DB, JWT, Azure, API URLs)
 
 ## Testes
-- Backend: `pytest backend/tests/`
-- Frontend: `npm test` na pasta `frontend/`
+- Backend: `pytest backend/tests`
+- Frontend: `npm test` dentro de `frontend/`
 
-## Contribuição
-Siga os padrões de código (PEP 8, ESLint) e envie PRs com testes automatizados.
+## Documentação
+- [docs/api.md](docs/api.md): Endpoints da API
+- [docs/frontend.md](docs/frontend.md): Guia do frontend
 
-## Licença
-MIT
+## Links úteis
+- [FastAPI Docs](https://fastapi.tiangolo.com/)
+- [React Docs](https://react.dev/)
+- [Azure Pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/)
