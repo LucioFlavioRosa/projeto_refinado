@@ -1,0 +1,209 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+/* Estilos do formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+input[type="text"]:required,
+input[type="number"]:required {
+    border-left: 4px solid #e74c3c;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-success {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #229954;
+}
+
+/* Mensagens */
+.message {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Tabela de listagem */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #495057;
+}
+
+.table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Links de navegação */
+.nav-links {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    input[type="text"],
+    input[type="number"] {
+        font-size: 14px;
+    }
+    
+    .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .table {
+        font-size: 14px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 8px;
+    }
+}
