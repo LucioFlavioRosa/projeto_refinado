@@ -1,30 +1,50 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
+# Arquivos de banco de dados
+*.mdb
+*.ldb
+*.accdb
+*.accde
+
+# Arquivos de configuração
 .env
-.venv/
-build/
-dist/
+config.asp
 
-# Node
-node_modules/
+# Arquivos temporários do Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Arquivos de backup
+*.bak
+*.backup
+*.old
+
+# Logs do IIS
 *.log
+logs/
 
-# Docker
-*.pid
-docker-compose.override.yml
+# Arquivos temporários do sistema
+*.tmp
+*.temp
 
-# VSCode
-.vscode/
+# Pastas de cache
+cache/
+temp/
 
-# MacOS
+# Arquivos do Visual Studio
+*.suo
+*.user
+*.sln.docstates
+
+# Arquivos do sistema
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 
-# Test/coverage
-coverage/
-*.cover
+# Arquivos de sessão ASP
+session/
 
-# Others
-*.sqlite3
-*.db
+# Uploads de usuário (se houver)
+uploads/
+files/
